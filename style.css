@@ -5,6 +5,11 @@
     cursor: pointer;}
 
 
+
+
+
+
+
 html, body { 
     margin: 0; 
     padding: 0; 
@@ -16,7 +21,11 @@ html {
 
 
 body { 
-    background-color: rgb(255, 255, 255);} 
+    margin: 0;
+    background: radial-gradient(#ffffff15 2px, transparent 2px),
+    linear-gradient(to bottom right, #061ed7, rgb(0, 26, 93), #010F4E);
+    background-size: 40px 40px, cover;
+    background-attachment: fixed;} 
 
 
 * { 
@@ -103,12 +112,15 @@ a {
     transition: transform 0.2s ease;} 
 
 
+
+
+
+    
+
 .hero { 
     position: relative;
-    overflow: hidden; 
-    background: radial-gradient(#ffffff15 2px, transparent 3px), 
-    linear-gradient( to bottom right, rgb(66, 179, 255),rgb(0, 85, 255),rgb(61, 139, 255)); 
-    background-size: 40px 40px, cover; 
+    overflow: visible; 
+    z-index: 1;
     width: 100%;
     min-height: 100vh; 
     display: flex; 
@@ -117,15 +129,187 @@ a {
     align-items: center; 
     margin-top: 0px;
     padding-top:0px; 
-    flex-direction: column;} 
+    flex-direction: column;
 
+    opacity: 0;
+    transform: translateY(25px);
+    animation: subirSuave 1.2s ease forwards;
+    animation-delay: 0.5s;
+       
+} 
+
+@keyframes subirSuave {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.subtitulo-hero {
+    margin-top: 15px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255) !important;
+    font-size: 16px !important;
+    opacity: 0;
+    transform: translateY(25px);
+    animation: subirSuave 1.2s ease forwards;
+    animation-delay: 0.5s;
+}
+@keyframes subirSuave {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 130px; /* antes era 30px */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-decoration: none;
+}
+
+.circle {
+    background-color: #ffffff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgb(0, 33, 87);
+    font-size: 18px;
+
+    animation: flutuar 1.8s ease-in-out infinite;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.circle:hover {
+    transform: scale(1.1);
+}
+
+@keyframes flutuar {
+    0% { transform: translateY(0); opacity: 0.8; }
+    50% { transform: translateY(8px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 0.8; }
+}
+
+
+.hero::after {
+    content: "";
+    position: absolute;
+    left: 2%;
+    bottom: -20px;
+    width: 96%;
+    height: 50px;
+
+    background: rgba(0, 0, 0, 0.18);
+    filter: blur(35px);
+    border-radius: 50%;
+
+    z-index: 9999;}
+
+
+@keyframes subirSombra {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-inner {
+    position: relative;
+    overflow: hidden;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center; /* 👈 centraliza verticalmente */
+    align-items: center;     /* 👈 centraliza horizontalmente */
+    text-align: center;
+}
+
+
+
+.card-diferencial {
+    flex: 1;
+    height: 60px;
+    background: #f7f7f7; /* 👈 amarelo */
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #000; /* texto escuro pra contraste */
+}
+
+.card-diferencial span {
+    font-size: 30px;
+    ;
+}
+
+
+.card-diferencial p {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: Lexend;
+    color:rgb(0, 30, 84);
+    
+}
+
+.card-diferencial i {
+    color:rgb(0, 30, 84); /* ícone */
+}
+
+
+
+.hero-card-transicao {
+    position: absolute;
+    left: 50%;
+    bottom: -30px; /* 👈 invade a sessao2 */
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    height: 90px;
+    background: white;
+    border-radius: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 25px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+    z-index: 10;
+}
+
+.hero-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    position: relative;
+
+   
+}
 
 .hero-text{
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 100%;}
+    width: 100%;
+    flex-direction: column;}
 
 
 .hero-text h1 { 
@@ -148,8 +332,10 @@ a {
     position: absolute; 
     transform: translate(-50%, -50%); 
     transition: left 0.15s ease-out, top 0.15s ease-out;
-    background: radial-gradient( circle, rgb(0, 187, 255) 0%, rgba(0, 234, 255, 0) 70%);
-    z-index: 1;} 
+    background: radial-gradient( circle, rgba(0, 71, 252, 0.251) 0%, rgba(0, 234, 255, 0) 70%);
+    z-index: 1;
+    mix-blend-mode: screen;
+} 
 
 
 .descricao { 
@@ -189,16 +375,32 @@ a {
 
 
 .sessao2{ 
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-    padding: 0 80px;
-    gap: 20px;}
+    overflow: visible;
+    padding: 80px 24px;
+    box-sizing: border-box;
+  
+}
     
+
+.animar-subir {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animar-subir.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 
 .sobre-texto {
     width: 50%;
@@ -207,8 +409,8 @@ a {
     
 
 .fotoperfil {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
     border-radius: 50%;
     margin-right: 0;} 
@@ -276,35 +478,33 @@ a {
     
     
 .ver-projeto { 
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center; 
-    width: 145px;
-    height: 30px; 
-    padding: 12px 24px; 
-    background-color: #4a6cf7; 
-    color: white; 
-    text-decoration: none; 
-    border-radius: 50px; 
-    border-bottom: 3px solid transparent; 
-    transition: all 0.3s ease; 
-    animation: brilhoBotao 2s;
-    margin-top: 20px;} 
+    display: inline-flex;
+    padding: 8px 28px 8px 14px;
+    font-size: 11px;
+    border-radius: 50px;
+    border: 0;
+    margin-top: 25px;
+    margin-left: -10px;
+    background-color: rgb(236, 236, 236);
+    color: rgb(14, 0, 91);
+    text-decoration: none;
+    font-family: 'Lexend', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    transition: all 0.5s ease;
+    align-items: center;
+    justify-content: flex-start;
+    } 
     
 
 .ver-projeto:hover { 
-    border-bottom: 3px solid rgb(28, 0, 130);} 
+    letter-spacing: 3px;
+    background-color:rgb(14, 0, 91);
+    color: white;
+} 
 
-
-.transicao{ 
-    width: 1000px; 
-    height: 10px; 
-    background-color: #f4f4f4; 
-    align-items: center; 
-    justify-content: center; 
-    margin: 0 auto; 
-    border-radius: 5px;} 
-    
 
 
 
@@ -318,8 +518,7 @@ a {
     justify-content: center; 
     position: relative; 
     overflow: visible; 
-    background-image: radial-gradient(#75b1ff22 2px, transparent 2px); 
-    background-size: 30px 30px; 
+
     padding-top: 120px;} 
     
 
@@ -385,8 +584,7 @@ a {
     font-size: 30px; 
     font-family: 'Lexend', sans-serif; 
     color: #00046c; 
-    background-image: radial-gradient(#75b1ff22 2px, transparent 2px); 
-    background-size: 30px 30px; } 
+   } 
     
 
 .skill{ 
@@ -418,8 +616,7 @@ a {
     min-height: 100vh; 
     align-items: center; 
     justify-content: center; 
-    background-image: radial-gradient(#75b1ff22 2px, transparent 2px); 
-    background-size: 30px 30px; } 
+    } 
     
 
 .servicos{ 
@@ -738,7 +935,8 @@ a {
 footer{ 
     min-height: 180px; 
     padding: 40px 80px; 
-    background-color: #00013e; 
+    background: radial-gradient(#ffffff15 2px, transparent 2px),
+    linear-gradient(to bottom right, rgb(0, 33, 114), #010F4E); 
     padding: 40px 20px;
      width: 100%; 
      height: 100%; 
