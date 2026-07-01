@@ -82,3 +82,20 @@ const menu = document.getElementById('menu');
 hamburguer.addEventListener("click", () => {
     menu.classList.toggle("ativo");
 });
+
+//-------------------------------------------------------------------------------------------
+const elementos = document.querySelectorAll(".animar-subir");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("mostrar");
+        }
+    });
+}, {
+    threshold: 0.3
+});
+
+elementos.forEach(elemento => {
+    observer.observe(elemento);
+});
