@@ -1064,6 +1064,30 @@ footer{
 
 @media (max-width: 600px) {
 
+
+.hero-card-transicao {
+    width: 90%;
+    height: auto;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    bottom: -120px;
+}
+
+.card-diferencial {
+    width: 100%;
+    justify-content: center;
+}
+
+
+
+
+
+    
 .header {
     position: absolute;
     width: 100%;
